@@ -32,9 +32,9 @@
             flex-wrap: wrap; /* Чтобы изображения могли автоматически переноситься на другую строку */
         }
         .image-container img {
-            margin: 0 20px;
-            max-width: 550px; /* Увеличен максимальный размер изображения */
-            max-height: 650px; /* Увеличен максимальный размер по высоте */
+            margin: 10px;
+            max-width: 550px;
+            max-height: 650px;
             object-fit: contain;
             cursor: pointer;
             border: 5px solid #ddd;
@@ -58,34 +58,37 @@
         /* Адаптивные стили для устройств с разной шириной экрана */
         @media (max-width: 1200px) {
             .image-container img {
-                max-width: 500px; /* Немного уменьшим изображения на больших планшетах и небольших ноутбуках */
+                max-width: 500px;
                 max-height: 600px;
             }
         }
         
         @media (max-width: 768px) {
+            .image-container {
+                flex-direction: column; /* Для планшетов и телефонов картинки будут размещены в столбик */
+            }
             .image-container img {
-                max-width: 400px; /* Уменьшаем для планшетов */
+                max-width: 400px;
                 max-height: 500px;
             }
             h1 {
-                font-size: 36px; /* Уменьшим размер заголовка для планшетов */
+                font-size: 36px; /* Уменьшаем заголовок для планшетов */
             }
         }
 
         @media (max-width: 480px) {
             .image-container img {
-                max-width: 320px; /* Размер для телефонов */
+                max-width: 320px;
                 max-height: 400px;
             }
             h1 {
-                font-size: 28px; /* Ещё меньше для телефонов */
+                font-size: 28px; /* Уменьшаем заголовок для телефонов */
             }
         }
 
         @media (max-width: 320px) {
             .image-container img {
-                max-width: 280px; /* Минимальный размер для очень маленьких экранов, таких как старые телефоны или консоли */
+                max-width: 280px;
                 max-height: 350px;
             }
             h1 {
@@ -124,7 +127,6 @@
             'images/photo13.jpg',
             'images/photo14.jpg',
             'images/photo15.jpg',
-            // Добавьте все пути к вашим изображениям
         ];
 
         let currentWinner = null;
@@ -156,6 +158,10 @@
         }
 
         generateNewImages();
+
+        // Настройка скорости смены картинок для мобильных устройств
+        const isMobile = window.innerWidth <= 768;
+        const changeDelay = isMobile ? 2000 : 3000; // Уменьшаем задержку для мобильных устройств
     </script>
 </body>
 </html>
