@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemeFak</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100vh;
+        }
+        h1 {
+            margin-top: 20px;
+            font-size: 48px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #ff6600;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        .image-container img {
+            margin: 10px;
+            max-width: 550px;
+            max-height: 650px;
+            object-fit: contain;
+            cursor: pointer;
+            border: 5px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .image-container img:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #ff6600;
+            color: white;
+            font-size: 16px;
+            text-align: center;
+        }
+        .blog-button {
+            display: inline-block;
+            margin-top: 10px; /* Уменьшено расстояние между текстом и кнопкой */
+            padding: 10px 20px;
+            background-color: #ff6600;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .image-container {
+                flex-direction: column;
+            }
+            h1 {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .image-container img {
+                max-width: 320px;
+                max-height: 400px;
+            }
+            h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>MemeFak</h1>
+    
+    <div class="image-container">
+        <img id="image1" src="images/photo1.jpg" alt="Image 1" onclick="chooseImage('left')">
+        <img id="image2" src="images/photo2.jpg" alt="Image 2" onclick="chooseImage('right')">
+    </div>
+
+    <footer>
+        MemeFak - это фанатская разработка, созданная пользователем под никнеймом SeMyOnOv.<br>
+        MemeFak - это онлайн голосование, созданное ради забавы.<br><br>
+        Отправляйте свои мемы на почту: <strong>memefak.dev@gmail.com</strong><br>
+        Чтобы мем был добавлен на MemeFak, он должен быть хотя бы немного смешным или забавным.<br><br>
+        <a href="blog.html" class="blog-button">Блог MemeFak</a>
+    </footer>
+
+    <script>
+        const images = [
+            'images/photo1.jpg',
+            'images/photo2.jpg',
+            'images/photo3.jpg',
+            'images/photo4.jpg',
+            'images/photo5.jpg',
+            'images/photo6.jpg',
+            'images/photo7.jpg',
+            'images/photo8.jpg',
+            'images/photo9.jpg',
+            'images/photo10.jpg',
+            'images/photo11.jpg',
+            'images/photo12.jpg',
+            'images/photo13.jpg',
+            'images/photo14.jpg',
+            'images/photo15.jpg',
+            'images/photo16.jpg',
+            'images/photo17.jpg',
+            'images/photo18.jpg',
+            'images/photo19.jpg',
+            'images/photo20.jpg',
+            'images/photo21.jpg',
+            'images/photo22.jpg',
+            'images/photo23.jpg',
+            'images/photo24.jpg',
+            'images/photo25.jpg',
+            'images/photo26.jpg',
+            'images/photo27.jpg',
+            'images/photo28.jpg',
+        ];
+
+        let currentWinner = null;
+
+        function chooseImage(choice) {
+            if (choice === 'left') {
+                currentWinner = document.getElementById('image1').src;
+            } else if (choice === 'right') {
+                currentWinner = document.getElementById('image2').src;
+            }
+            generateNewImages();
+        }
+
+        function generateNewImages() {
+            let randomIndex1, randomIndex2;
+
+            if (currentWinner) {
+                document.getElementById('image1').src = currentWinner;
+            } else {
+                randomIndex1 = Math.floor(Math.random() * images.length);
+                document.getElementById('image1').src = images[randomIndex1];
+            }
+
+            do {
+                randomIndex2 = Math.floor(Math.random() * images.length);
+            } while (document.getElementById('image1').src === images[randomIndex2]);
+
+            document.getElementById('image2').src = images[randomIndex2];
+        }
+
+        generateNewImages();
+    </script>
+</body>
+</html>
