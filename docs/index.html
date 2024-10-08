@@ -63,18 +63,13 @@
             text-decoration: none;
             border-radius: 5px;
             font-size: 16px;
-            border: 2px solid #ffffff;
+            border: 2px solid #ffffff; /* Белая рамка вокруг кнопки */
             transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
         }
         .blog-button:hover {
-            background-color: white;
-            color: #ff6600;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        #userCount {
-            font-size: 18px;
-            margin-top: 20px;
-            margin-bottom: 10px;
+            background-color: white; /* Меняет фон при наведении */
+            color: #ff6600; /* Меняет цвет текста при наведении */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Добавляет тень при наведении */
         }
 
         @media (max-width: 768px) {
@@ -108,12 +103,8 @@
     <footer>
         MemeFak - это фанатская разработка, созданная пользователем под никнеймом SeMyOnOv.<br>
         MemeFak - это онлайн голосование, созданное ради забавы.<br><br>
-
-        <div id="userCount">На данный момент пользователей на сайте: <span id="usersOnline">0</span></div><br>
-
         Отправляйте свои мемы на почту: <strong>memefak.dev@gmail.com</strong><br>
         Чтобы мем был добавлен на MemeFak, он должен быть хотя бы немного смешным или забавным.<br><br>
-
         <a href="blog.html" class="blog-button">Блог MemeFak</a>
     </footer>
 
@@ -178,20 +169,6 @@
         }
 
         generateNewImages();
-
-        // Функция для получения количества пользователей в реальном времени
-        function updateUserCount() {
-            // Этот пример использует случайное число для демонстрации
-            // В реальном проекте здесь нужно использовать WebSocket или другой механизм реального времени
-            const usersOnline = Math.floor(Math.random() * 100) + 1;
-            document.getElementById('usersOnline').textContent = usersOnline;
-        }
-
-        // Обновление каждые 5 секунд
-        setInterval(updateUserCount, 5000);
-
-        // Первоначальное обновление
-        updateUserCount();
     </script>
 </body>
 </html>
